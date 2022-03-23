@@ -1,0 +1,12 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load-Balencer-WEB</title>
+</head>
+<body>
+    <h1>%HOSTNAME%</h1>
+    <img src="https://storage.cloud.google.com/load-balencer-web-s3/717gnxZcjOL._AC_SX522_.jpg">
+</body>
+</html>
