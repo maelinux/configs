@@ -1,0 +1,21 @@
+<VirtualHost *:80>
+ServerAdmin admin@yourdomain.com
+DirectoryIndex index.php
+DocumentRoot /var/www/
+#DocumentRoot /var/www/joomla3
+ServerName 192.168.20.152
+RedirectMatch ^/$ /joomla
+#Redirect permanent / http://10.101.9.37/joomla
+#RequestHeader set X-Forwarded-Path "/joomla"
+ServerAlias www.yourdomain.com
+<Directory /var/www>
+RewriteEngine on
+#RewriteRule "^/" "/joomla"
+Options FollowSymLinks
+AllowOverride All
+Order allow,deny
+allow from all
+</Directory>
+ErrorLog /var/log/apache2/joomla-error_log
+CustomLog /var/log/apache2/joomla-access_log common
+</VirtualHost>
