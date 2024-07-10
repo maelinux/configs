@@ -1,0 +1,40 @@
+Bloquer le port ssh avec iptables :
+sudo iptables -I INPUT -p tcp --dport 22 -j DROP
+
+========================
+Fichier /etc/knockd.conf
+========================
+
+[options]
+        logfile = /var/log/knockd.log
+
+[openSSH]
+        sequence    = 7000,8000,9000
+        seq_timeout = 5
+        command     = /sbin/iptables -I INPUT 1 -s %IP% -p tcp --dport 22 -j ACCEPT
+        tcpflags    = syn
+
+[closeSSH]
+        sequence    = 9000,8000,7000
+        seq_timeout = 5
+        command     = /sbin/iptables -D INPUT -s %IP% -p tcp --dport 22 -j ACCEPT
+        tcpflags    = syn
+
+[openHTTPS]
+        sequence    = 12345,54321,24680,13579
+        seq_timeout = 5
+        command     = /usr/local/sbin/knock_add -i -c INPUT -p tcp -d 443 -f %IP%
+        tcpflags    = syn
+
+===========================
+Fichier /etc/default/knockd
+===========================
+
+# control if we start knockd at init or not
+# 1 = start
+# anything else = don't start
+# PLEASE EDIT /etc/knockd.conf BEFORE ENABLING
+START_KNOCKD=0
+
+# command line options
+KNOCKD_OPTS="-i ens33" # /!\ spécifier sa carte réseau ici /!\
