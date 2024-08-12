@@ -38,7 +38,7 @@ Fichier /etc/default/knockd
 # 1 = start
 # anything else = don't start
 # PLEASE EDIT /etc/knockd.conf BEFORE ENABLING
-START_KNOCKD=0
+START_KNOCKD=1
 
 # command line options
 KNOCKD_OPTS="-i ens33" # /!\ spécifier sa carte réseau ici /!\
